@@ -3,10 +3,11 @@
  * and open the template in the editor.
  */
 package xml.generated;
+
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -14,16 +15,17 @@ import javax.xml.bind.annotation.XmlType;
  * @author Greg
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "forum_type")
-public class ForumType {
-    @XmlElement(required = true)
-    protected String name;
+@XmlType(name = "ForumsList_type", propOrder = {
+    "forum"
+})
+public class ForumsListType {
+    protected List<ForumType> forum;
     
-    public String getName() {
-        return name;
-    }
-    public void setName(String value) {
-        this.name = value;
+    public List<ForumType> getThreads() {
+        if (forum == null) {
+            forum = new ArrayList<ForumType>();
+        }
+        return this.forum;
     }
     
 }

@@ -31,8 +31,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Forum_QNAME = new QName("", "forum");
+    private final static QName _ThreadsList_QNAME = new QName("", "threadsList");
     private final static QName _Thread_QNAME = new QName("", "thread");
+//    private final static QName _ForumList_QNAME = new QName("", "forumList");
+//    private final static QName _Forum_QNAME = new QName("", "forum");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: jaxbdemo.generated
@@ -41,8 +43,8 @@ public class ObjectFactory {
     public ObjectFactory() {
     }
 
-    public ForumType creatForumType() {
-        return new ForumType();
+    public ThreadsListType createThreadsListType() {
+        return new ThreadsListType();
     }
 
     public ThreadType createThreadType() {
@@ -53,9 +55,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link JournalType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "forum")
-    public JAXBElement<ForumType> createForum(ForumType value) {
-        return new JAXBElement<ForumType>(_Forum_QNAME, ForumType.class, null, value);
+    @XmlElementDecl(namespace = "", name = "threadsList")
+    public JAXBElement<ThreadsListType> createThreads(ThreadsListType value) {
+        return new JAXBElement<ThreadsListType>(_ThreadsList_QNAME, ThreadsListType.class, null, value);
     }
 
     /**

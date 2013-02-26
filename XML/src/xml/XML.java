@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.List;
 import javax.xml.bind.*;
 import xml.generated.ThreadType;
-import xml.generated.ForumType;
+import xml.generated.ThreadsListType;
 import xml.generated.ObjectFactory;
 
 /**
@@ -31,10 +31,10 @@ public class XML {
                 JAXBContext.newInstance("xml.generated");
             Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
             
-            JAXBElement<ForumType> forumElement = 
-                (JAXBElement<ForumType>) unMarshaller.unmarshal(xmlDocument);
-            ForumType forum = forumElement.getValue();
-            List<ThreadType> threadList = forum.getThreads();
+            JAXBElement<ThreadsListType> threadsElement = 
+                (JAXBElement<ThreadsListType>) unMarshaller.unmarshal(xmlDocument);
+            ThreadsListType threadsList = threadsElement.getValue();
+            List<ThreadType> threadList = threadsList.getThreads();
                 
             for (ThreadType thread : threadList) {
                 Thread.addThread(thread.getName().trim(), thread.getForum());
