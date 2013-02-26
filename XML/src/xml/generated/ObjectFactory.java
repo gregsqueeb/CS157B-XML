@@ -31,11 +31,11 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ThreadsList_QNAME = new QName("", "threadsList");
+    private final static QName _ThreadList_QNAME = new QName("", "threadList");
     private final static QName _Thread_QNAME = new QName("", "thread");
-//    private final static QName _ForumList_QNAME = new QName("", "forumList");
-//    private final static QName _Forum_QNAME = new QName("", "forum");
-
+    private final static QName _ForumList_QNAME = new QName("", "forumList");
+    private final static QName _Forum_QNAME = new QName("", "forum");
+    
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: jaxbdemo.generated
      * 
@@ -43,21 +43,29 @@ public class ObjectFactory {
     public ObjectFactory() {
     }
 
-    public ThreadsListType createThreadsListType() {
-        return new ThreadsListType();
+    public ThreadListType creatThreadListType() {
+        return new ThreadListType();
     }
 
     public ThreadType createThreadType() {
         return new ThreadType();
+    }
+    
+    public ForumListType creatForumListType() {
+        return new ForumListType();
+    }
+
+    public ForumType createForumType() {
+        return new ForumType();
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link JournalType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "threadsList")
-    public JAXBElement<ThreadsListType> createThreads(ThreadsListType value) {
-        return new JAXBElement<ThreadsListType>(_ThreadsList_QNAME, ThreadsListType.class, null, value);
+    @XmlElementDecl(namespace = "", name = "threadList")
+    public JAXBElement<ThreadListType> createThreadList(ThreadListType value) {
+        return new JAXBElement<ThreadListType>(_ThreadList_QNAME, ThreadListType.class, null, value);
     }
 
     /**
@@ -65,8 +73,19 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "", name = "thread")
-    public JAXBElement<ThreadType> createArticle(ThreadType value) {
+    public JAXBElement<ThreadType> createThread(ThreadType value) {
         return new JAXBElement<ThreadType>(_Thread_QNAME, ThreadType.class, null, value);
     }
+    
+    @XmlElementDecl(namespace = "", name = "forumList")
+    public JAXBElement<ForumListType> createForumList(ForumListType value) {
+        return new JAXBElement<ForumListType>(_ForumList_QNAME, ForumListType.class, null, value);
+    }
+    
+    @XmlElementDecl(namespace = "", name = "forum")
+    public JAXBElement<ForumType> createForum(ForumType value) {
+        return new JAXBElement<ForumType>(_Forum_QNAME, ForumType.class, null, value);
+    }
+    
 
 }

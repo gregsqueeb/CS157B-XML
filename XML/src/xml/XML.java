@@ -7,7 +7,9 @@ import java.io.File;
 import java.util.List;
 import javax.xml.bind.*;
 import xml.generated.ThreadType;
-import xml.generated.ThreadsListType;
+import xml.generated.ThreadListType;
+import xml.generated.ForumType;
+import xml.generated.ForumListType;
 import xml.generated.ObjectFactory;
 
 /**
@@ -30,23 +32,33 @@ public class XML {
             JAXBContext jaxbContext = 
                 JAXBContext.newInstance("xml.generated");
             Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
+            JAXBElement<ForumListType> forumListElement = 
+                (JAXBElement<ForumListType>) unMarshaller.unmarshal(forumXML);
+            ForumListType forumContainer = forumListElement.getValue();
+            List<ForumType> forumList = forumContainer.getForums();
+            for (ForumType forum : forumList) {
+                Forum.addForum(forum.getName().trim());
+                
+		System.out.printf("\n    Forum name = '%s'\n",
+                forum.getName().trim());
+            }
             
-            JAXBElement<ThreadsListType> threadsElement = 
-                (JAXBElement<ThreadsListType>) unMarshaller.unmarshal(xmlDocument);
-            ThreadsListType threadsList = threadsElement.getValue();
-            List<ThreadType> threadList = threadsList.getThreads();
+            
+            
+            JAXBElement<ThreadListType> threadListElement = 
+                (JAXBElement<ThreadListType>) unMarshaller.unmarshal(xmlDocument);
+            ThreadListType threadContainer = threadListElement.getValue();
+            List<ThreadType> threadList = threadContainer.getThreads();
                 
             for (ThreadType thread : threadList) {
                 Thread.addThread(thread.getName().trim(), thread.getForum());
-					System.out.printf("\n    THREAD name = '%s'\n",
-                                      thread.getName().trim());
-					System.out.printf("            user = '%s'\n",
-                                      thread.getUser());
-					System.out.printf("            date = '%s'\n",
-                                      thread.getDate());
-					System.out.printf("            forum = '%d'\n",
-                                      thread.getForum());
-				}
+		System.out.printf("\n    THREAD name = '%s'\n",
+                thread.getName().trim());
+		System.out.printf("           user = '%s'\n", thread.getUser());
+		System.out.printf("           date = '%s'\n", thread.getDate());
+		System.out.printf("           forum = '%d'\n", 
+                        thread.getForum());
+            }
 	} 
         catch (JAXBException ex) {
             ex.printStackTrace();

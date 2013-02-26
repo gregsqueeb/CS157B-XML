@@ -8,5 +8,5 @@
         <xs:attribute name="forum" type="xs:string"/>
         <xs:attribute name="user" type="xs:string"/>
     </xs:complexType>
-    <xs:element name="threadsList" type="threadsList_type"/>
+    <xs:element name="threadList" type="threadList_type"/>
 </xs:schema>

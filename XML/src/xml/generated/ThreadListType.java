@@ -15,10 +15,10 @@ import javax.xml.bind.annotation.XmlType;
  * @author Greg
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "threadsList_type", propOrder = {
+@XmlType(name = "threadList_type", propOrder = {
     "thread"
 })
-public class ThreadsListType {
+public class ThreadListType {
     protected List<ThreadType> thread;
     
     public List<ThreadType> getThreads() {

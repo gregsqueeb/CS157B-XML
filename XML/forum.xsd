@@ -5,4 +5,5 @@
             <xs:element name="name" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:element name="forumList" type="forumList_type"/>
 </xs:schema>

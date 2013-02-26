@@ -15,13 +15,13 @@ import javax.xml.bind.annotation.XmlType;
  * @author Greg
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ForumsList_type", propOrder = {
+@XmlType(name = "forumList_type", propOrder = {
     "forum"
 })
-public class ForumsListType {
+public class ForumListType {
     protected List<ForumType> forum;
     
-    public List<ForumType> getThreads() {
+    public List<ForumType> getForums() {
         if (forum == null) {
             forum = new ArrayList<ForumType>();
         }

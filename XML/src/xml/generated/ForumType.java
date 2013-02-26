@@ -25,5 +25,4 @@ public class ForumType {
     public void setName(String value) {
         this.name = value;
     }
-    
 }
