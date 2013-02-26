@@ -21,6 +21,11 @@ public class XML {
      */
     public void unMarshall(File xmlDocument) 
     {
+        Class klasses[] = {Forum.class, Thread.class, MyForumPost.class};
+        HibernateContext.addClasses(klasses);
+        HibernateContext.createSchema();
+        File forumXML = new File("forum.xml");
+        
 	try {
             JAXBContext jaxbContext = 
                 JAXBContext.newInstance("xml.generated");
@@ -32,13 +37,14 @@ public class XML {
             List<ThreadType> threadList = forum.getThreads();
                 
             for (ThreadType thread : threadList) {
+                Thread.addThread(thread.getName().trim(), thread.getForum());
 					System.out.printf("\n    THREAD name = '%s'\n",
                                       thread.getName().trim());
 					System.out.printf("            user = '%s'\n",
                                       thread.getUser());
 					System.out.printf("            date = '%s'\n",
                                       thread.getDate());
-					System.out.printf("            forum = '%s'\n",
+					System.out.printf("            forum = '%d'\n",
                                       thread.getForum());
 				}
 	} 
