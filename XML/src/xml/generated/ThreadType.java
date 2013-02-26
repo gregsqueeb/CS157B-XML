@@ -23,7 +23,7 @@ public class ThreadType {
     @XmlAttribute(name = "user")
     protected String user;
     @XmlAttribute(name = "forum")
-    protected Integer forum;
+    protected String forum;
     
     public String getName() {
         return name;
@@ -43,10 +43,10 @@ public class ThreadType {
     public void setDate(String value) {
         this.date = value;
     }
-    public Integer getForum() {
+    public String getForum() {
         return forum;
     }
-    public void setForum(Integer value) {
+    public void setForum(String value) {
         this.forum = value;
     }
     

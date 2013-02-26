@@ -62,6 +62,19 @@ public class Forum {
             return forum;
         }
         
+        public static Forum find(String name)
+        {
+            Session session = HibernateContext.getSession();
+            Query query = session.createQuery("from Forum where name = :namevar");
+
+            query.setString("namevar", name);
+            Forum forum = (Forum) query.uniqueResult();
+            System.out.printf("Name you searched for: %s\n", name);
+
+            session.close();
+            return forum;
+        }
+        
         public static void load()
         {
             Session session = HibernateContext.getSession();

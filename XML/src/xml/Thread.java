@@ -115,9 +115,9 @@ public class Thread{
         System.out.println("Thread table loaded.");
     }
 
-    public static void addThread(String name, Integer forumID){
+    public static void addThread(String name, String forumName){
         Session session = HibernateContext.getSession();
-        Forum forum = Forum.find(forumID);
+        Forum forum = Forum.find(forumName);
         Thread thread = new Thread(name);
         thread.setForum(forum);
         Transaction tx = session.beginTransaction(); 

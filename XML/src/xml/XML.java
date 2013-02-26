@@ -56,7 +56,7 @@ public class XML {
                 thread.getName().trim());
 		System.out.printf("           user = '%s'\n", thread.getUser());
 		System.out.printf("           date = '%s'\n", thread.getDate());
-		System.out.printf("           forum = '%d'\n", 
+		System.out.printf("           forum = '%s'\n", 
                         thread.getForum());
             }
 	} 
