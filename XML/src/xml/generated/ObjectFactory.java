@@ -35,6 +35,8 @@ public class ObjectFactory {
     private final static QName _Thread_QNAME = new QName("", "thread");
     private final static QName _ForumList_QNAME = new QName("", "forumList");
     private final static QName _Forum_QNAME = new QName("", "forum");
+    private final static QName _ForumPostList_QNAME = new QName("", "forumPostList");
+    private final static QName _ForumPost_QNAME = new QName("", "forumPost");
     
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: jaxbdemo.generated
@@ -57,6 +59,13 @@ public class ObjectFactory {
 
     public ForumType createForumType() {
         return new ForumType();
+    }
+    public ForumPostListType creatForumPostListType() {
+        return new ForumPostListType();
+    }
+
+    public ForumPostType createForumPostType() {
+        return new ForumPostType();
     }
 
     /**
@@ -85,6 +94,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "forum")
     public JAXBElement<ForumType> createForum(ForumType value) {
         return new JAXBElement<ForumType>(_Forum_QNAME, ForumType.class, null, value);
+    }
+    @XmlElementDecl(namespace = "", name = "forumPostList")
+    public JAXBElement<ForumPostListType> createForumPostList(ForumPostListType value) {
+        return new JAXBElement<ForumPostListType>(_ForumPostList_QNAME, ForumPostListType.class, null, value);
+    }
+    
+    @XmlElementDecl(namespace = "", name = "forumPost")
+    public JAXBElement<ForumPostType> createForumPost(ForumPostType value) {
+        return new JAXBElement<ForumPostType>(_ForumPost_QNAME, ForumPostType.class, null, value);
     }
     
 

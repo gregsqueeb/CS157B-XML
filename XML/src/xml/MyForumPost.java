@@ -111,6 +111,20 @@ public class MyForumPost {
             System.out.println("Posts table loaded.");
         }
         
+        public static void addForumPost(String content, String user, String thread){
+            Session session = HibernateContext.getSession();
+            Thread postThread = Thread.find(thread);
+            MyForumPost post = new MyForumPost(content);
+            post.setThread(postThread);
+            
+            Transaction tx = session.beginTransaction(); 
+            {
+                session.save(post);
+            }
+            tx.commit();
+            session.close();
+        }
+        
         public static MyForumPost find(long id)
         {
             Session session = HibernateContext.getSession();

@@ -10,6 +10,8 @@ import xml.generated.ThreadType;
 import xml.generated.ThreadListType;
 import xml.generated.ForumType;
 import xml.generated.ForumListType;
+import xml.generated.ForumPostType;
+import xml.generated.ForumPostListType;
 import xml.generated.ObjectFactory;
 
 /**
@@ -27,6 +29,7 @@ public class XML {
         HibernateContext.addClasses(klasses);
         HibernateContext.createSchema();
         File forumXML = new File("forum.xml");
+        File postsXML = new File("forumPosts.xml");
         
 	try {
             JAXBContext jaxbContext = 
@@ -59,6 +62,22 @@ public class XML {
 		System.out.printf("           forum = '%s'\n", 
                         thread.getForum());
             }
+            
+            JAXBElement<ForumPostListType> forumPostListElement = 
+                (JAXBElement<ForumPostListType>) unMarshaller.unmarshal(postsXML);
+            ForumPostListType forumPostsContainer = forumPostListElement.getValue();
+            List<ForumPostType> postList = forumPostsContainer.getPosts();
+            for (ForumPostType post : postList) {
+                MyForumPost.addForumPost(post.getContent(), post.getUser(), post.getThread());
+                
+		System.out.printf("\n    Post content = '%s'\n",
+                post.getContent());
+                System.out.printf("\n         user    = '%s'\n",
+                post.getUser());
+                System.out.printf("\n         thread  = '%s'\n",
+                post.getThread());
+            }
+            
 	} 
         catch (JAXBException ex) {
             ex.printStackTrace();
