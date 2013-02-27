@@ -32,6 +32,11 @@ import org.hibernate.Transaction;
 @Entity
 public class User
 {    
+
+    
+    static void addUser(String trim) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     private long id;
     private String userName;
     private UserDetails userDetails;

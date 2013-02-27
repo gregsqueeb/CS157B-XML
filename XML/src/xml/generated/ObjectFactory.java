@@ -37,7 +37,11 @@ public class ObjectFactory {
     private final static QName _Forum_QNAME = new QName("", "forum");
     private final static QName _ForumPostList_QNAME = new QName("", "forumPostList");
     private final static QName _ForumPost_QNAME = new QName("", "forumPost");
-    
+    private final static QName _UserList_QNAME = new QName("", "userlist");    
+    private final static QName _User_QNAME = new QName("", "user");
+     private final static QName _UserDetailsList_QNAME = new QName("", "userdetailslist");    
+    private final static QName _UserDetails_QNAME = new QName("", "userdetails");
+
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: jaxbdemo.generated
      * 
@@ -67,7 +71,12 @@ public class ObjectFactory {
     public ForumPostType createForumPostType() {
         return new ForumPostType();
     }
-
+    public UserListType createUserListType(){
+        return new UserListType();
+    }
+    public UserType createUserType(){
+        return new UserType();
+    }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link JournalType }{@code >}}
      * 
@@ -105,5 +114,20 @@ public class ObjectFactory {
         return new JAXBElement<ForumPostType>(_ForumPost_QNAME, ForumPostType.class, null, value);
     }
     
-
+     @XmlElementDecl(namespace = "", name = "userlist")
+    public JAXBElement<UserListType> createUserList(UserListType value) {
+        return new JAXBElement<UserListType>(_UserList_QNAME, UserListType.class, null, value);
+    }
+      @XmlElementDecl(namespace = "", name = "user")
+    public JAXBElement<UserType> createUser(UserType value) {
+        return new JAXBElement<UserType>(_User_QNAME, UserType.class, null, value);
+    }
+@XmlElementDecl(namespace = "", name = "userdetailslist")
+    public JAXBElement<UserDetailsListType> createUserDetailsList(UserDetailsListType value) {
+        return new JAXBElement<UserDetailsListType>(_UserDetailsList_QNAME, UserDetailsListType.class, null, value);
+    }
+      @XmlElementDecl(namespace = "", name = "userdetails")
+    public JAXBElement<UserDetailsType> createUserDetails(UserDetailsType value) {
+        return new JAXBElement<UserDetailsType>(_UserDetails_QNAME, UserDetailsType.class, null, value);
+    }
 }

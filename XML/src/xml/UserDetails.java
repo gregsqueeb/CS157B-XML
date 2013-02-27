@@ -2,14 +2,6 @@ package xml;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +10,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -34,6 +27,18 @@ import org.hibernate.Transaction;
 @Entity
 @Table(name = "User_Details")
 public class UserDetails {
+
+    static void addUserDetails(String email) {
+            Session session = HibernateContext.getSession();
+            UserDetails u = new UserDetails(email);
+            Transaction tx = session.beginTransaction(); 
+            {
+                session.save(u);
+            }
+            tx.commit();
+            session.close();
+            
+    }
     
     private long id;
     private String emailAddress;

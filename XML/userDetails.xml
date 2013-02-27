@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userdetailslist>
+    <userdetails>
+        <emailaddress>mac@emial.com</emailaddress>
+    </userdetails>
+     <userdetails>
+        <emailaddress>dennis@emial.com</emailaddress>
+    </userdetails>
+     <userdetails> 
+        <emailaddress>dee@email.com</emailaddress>
+    </userdetails>
+     <userdetails>
+        <emailaddress>charlie@email.com</emailaddress>
+    </userdetails>
+     <userdetails>
+        <emailaddress>frank@email.com</emailaddress>
+    </userdetails>
+</userdetailslist>
