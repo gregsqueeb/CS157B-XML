@@ -39,8 +39,8 @@ public class ObjectFactory {
     private final static QName _ForumPost_QNAME = new QName("", "forumPost");
     private final static QName _UserList_QNAME = new QName("", "userlist");    
     private final static QName _User_QNAME = new QName("", "user");
-     private final static QName _UserDetailsList_QNAME = new QName("", "userdetailslist");    
-    private final static QName _UserDetails_QNAME = new QName("", "userdetails");
+    private final static QName _UserDetailsList_QNAME = new QName("", "userDetailsList");    
+    private final static QName _UserDetails_QNAME = new QName("", "userDetails");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: jaxbdemo.generated
@@ -76,6 +76,12 @@ public class ObjectFactory {
     }
     public UserType createUserType(){
         return new UserType();
+    }
+     public UserDetailsListType createUserDetailsListType(){
+        return new UserDetailsListType();
+    }
+    public UserDetailsType createUserDetailsType(){
+        return new UserDetailsType();
     }
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link JournalType }{@code >}}
@@ -122,11 +128,11 @@ public class ObjectFactory {
     public JAXBElement<UserType> createUser(UserType value) {
         return new JAXBElement<UserType>(_User_QNAME, UserType.class, null, value);
     }
-@XmlElementDecl(namespace = "", name = "userdetailslist")
+@XmlElementDecl(namespace = "", name = "userDetailsList")
     public JAXBElement<UserDetailsListType> createUserDetailsList(UserDetailsListType value) {
         return new JAXBElement<UserDetailsListType>(_UserDetailsList_QNAME, UserDetailsListType.class, null, value);
     }
-      @XmlElementDecl(namespace = "", name = "userdetails")
+      @XmlElementDecl(namespace = "", name = "userDetails")
     public JAXBElement<UserDetailsType> createUserDetails(UserDetailsType value) {
         return new JAXBElement<UserDetailsType>(_UserDetails_QNAME, UserDetailsType.class, null, value);
     }

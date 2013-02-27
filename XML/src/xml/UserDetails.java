@@ -30,14 +30,18 @@ public class UserDetails {
 
     static void addUserDetails(String email) {
             Session session = HibernateContext.getSession();
-            UserDetails u = new UserDetails(email);
+            UserDetails userDetails = new UserDetails(email);
             Transaction tx = session.beginTransaction(); 
             {
-                session.save(u);
+                session.save(userDetails);
             }
             tx.commit();
             session.close();
             
+    }
+
+    public static UserDetails find(String name) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
     private long id;

@@ -34,8 +34,16 @@ public class User
 {    
 
     
-    static void addUser(String trim) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    static void addUser(String name) {
+         Session session = HibernateContext.getSession();
+            UserDetails userDetails = UserDetails.find(name);
+            User user = new User(name, userDetails);
+            Transaction tx = session.beginTransaction(); 
+            {
+                session.save(user);
+            }
+            tx.commit();
+            session.close();
     }
     private long id;
     private String userName;

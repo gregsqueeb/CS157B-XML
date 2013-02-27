@@ -20,11 +20,11 @@ public class XML {
      */
     public void unMarshall(File xmlDocument) 
     {
-        /*
+        
        Class klasses[] = {UserDetails.class};
        HibernateContext.addClasses(klasses);
        HibernateContext.createSchema();
-       */
+       
         File forumXML = new File("forum.xml");
         File postsXML = new File("forumPosts.xml");
         File userXML = new File("user.xml");
@@ -40,7 +40,7 @@ public class XML {
             UserListType userContainer = userListElement.getValue();
             List<UserType> userList = userContainer.getUserList();
             for (UserType user : userList) {
-                //User.addUser(user.getName().trim());//add to database
+                User.addUser(user.getName().trim());//add to database
                 
 		System.out.printf("\n    User name = '%s'\n",
                 user.getName().trim());
@@ -53,7 +53,7 @@ public class XML {
             UserDetailsListType userDetailsContainer = userDetailsListElement.getValue();
             List<UserDetailsType> userDetailsList = userDetailsContainer.getUserDetails();
             for (UserDetailsType userDetails : userDetailsList) {
-                //UserDetails.addUserDetails(userDetails.getEmail().trim());//add to database
+                UserDetails.addUserDetails(userDetails.getEmail().trim());//add to database
                 
 		System.out.printf("\n    UserDetails email = '%s'\n",
                 userDetails.getEmail().trim());

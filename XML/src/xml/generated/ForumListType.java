@@ -15,9 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author Greg
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "forumList_type", propOrder = {
-    "forum"
-})
+@XmlType(name = "forumList_type", propOrder = {"forum"})
 public class ForumListType {
     protected List<ForumType> forum;
     

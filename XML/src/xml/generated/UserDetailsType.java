@@ -14,17 +14,17 @@ import javax.xml.bind.annotation.XmlType;
  * @author mr.nam
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "userdetails_type")
+@XmlType(name = "userDetails_type" )
 public class UserDetailsType {
     @XmlElement(required = true)
-    protected String emailaddress;
+    protected String email;
 
     public String getEmail() {
-        return emailaddress;
+        return email;
     }
 
     public void setEmail(String emailaddress) {
-        this.emailaddress = emailaddress;
+        this.email = emailaddress;
     }
     
 }
