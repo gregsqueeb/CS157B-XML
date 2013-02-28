@@ -37,7 +37,7 @@ public class ObjectFactory {
     private final static QName _Forum_QNAME = new QName("", "forum");
     private final static QName _ForumPostList_QNAME = new QName("", "forumPostList");
     private final static QName _ForumPost_QNAME = new QName("", "forumPost");
-    private final static QName _UserList_QNAME = new QName("", "userlist");    
+    private final static QName _UserList_QNAME = new QName("", "userList");    
     private final static QName _User_QNAME = new QName("", "user");
     private final static QName _UserDetailsList_QNAME = new QName("", "userDetailsList");    
     private final static QName _UserDetails_QNAME = new QName("", "userDetails");
@@ -120,7 +120,7 @@ public class ObjectFactory {
         return new JAXBElement<ForumPostType>(_ForumPost_QNAME, ForumPostType.class, null, value);
     }
     
-     @XmlElementDecl(namespace = "", name = "userlist")
+     @XmlElementDecl(namespace = "", name = "userList")
     public JAXBElement<UserListType> createUserList(UserListType value) {
         return new JAXBElement<UserListType>(_UserList_QNAME, UserListType.class, null, value);
     }

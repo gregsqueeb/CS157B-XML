@@ -21,7 +21,8 @@ public class XML {
     public void unMarshall(File xmlDocument) 
     {
         
-       Class klasses[] = {UserDetails.class};
+       Class klasses[] = {Forum.class, Thread.class, MyForumPost.class,
+                            User.class, UserDetails.class};
        HibernateContext.addClasses(klasses);
        HibernateContext.createSchema();
        
@@ -34,19 +35,6 @@ public class XML {
             JAXBContext jaxbContext = 
                 JAXBContext.newInstance("xml.generated");
             Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
-            //user
-             JAXBElement<UserListType> userListElement = 
-                (JAXBElement<UserListType>) unMarshaller.unmarshal(userXML);
-            UserListType userContainer = userListElement.getValue();
-            List<UserType> userList = userContainer.getUserList();
-            for (UserType user : userList) {
-                User.addUser(user.getName().trim());//add to database
-                
-		System.out.printf("\n    User name = '%s'\n",
-                user.getName().trim());
-            }
-            
-           
             //userdetails
             JAXBElement<UserDetailsListType> userDetailsListElement = 
                 (JAXBElement<UserDetailsListType>) unMarshaller.unmarshal(userDetailsXML);
@@ -58,7 +46,10 @@ public class XML {
 		System.out.printf("\n    UserDetails email = '%s'\n",
                 userDetails.getEmail().trim());
             }
-            /*
+           
+           
+          
+            
             //forum
             JAXBElement<ForumListType> forumListElement = 
                 (JAXBElement<ForumListType>) unMarshaller.unmarshal(forumXML);
@@ -88,6 +79,19 @@ public class XML {
                         thread.getForum());
             }
             
+            //user
+             JAXBElement<UserListType> userListElement = 
+                (JAXBElement<UserListType>) unMarshaller.unmarshal(userXML);
+            UserListType userContainer = userListElement.getValue();
+            List<UserType> userList = userContainer.getUserList();
+            for (UserType user : userList) {
+                User.addUser(user.getName().trim(),user.getEmail().trim());//add to database
+                //UserDetails u = UserDetails.find("mac@email.com");
+                //System.out.println(u.getEmailAddress());
+		System.out.printf("\n    User name = '%s' + email = '%s'\n",
+                user.getName().trim(),user.getEmail().trim());
+            }
+            //posts
             JAXBElement<ForumPostListType> forumPostListElement = 
                 (JAXBElement<ForumPostListType>) unMarshaller.unmarshal(postsXML);
             ForumPostListType forumPostsContainer = forumPostListElement.getValue();
@@ -95,14 +99,14 @@ public class XML {
             for (ForumPostType post : postList) {
                 MyForumPost.addForumPost(post.getContent(), post.getUser(), post.getThread());
                 
-		System.out.printf("\n    Post content = '%s'\n",
-                post.getContent());
-                System.out.printf("\n         user    = '%s'\n",
-                post.getUser());
-                System.out.printf("\n         thread  = '%s'\n",
-                post.getThread());
+//		System.out.printf("\n    Post content = '%s'\n",
+//                post.getContent());
+//                System.out.printf("\n         user    = '%s'\n",
+//                post.getUser());
+//                System.out.printf("\n         thread  = '%s'\n",
+//                post.getThread());
             }
-            */
+             
 	} 
         catch (JAXBException ex) {
             ex.printStackTrace();

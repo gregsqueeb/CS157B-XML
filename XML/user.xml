@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<userlist>
-    <user email="mac@emial.com">
+<userList>
+    <user email="mac@email.com">
         <name>Mac</name>        
     </user>
-    <user email="dennis@emial.com">
+    <user email="dennis@email.com">
         <name>Dennis</name>     
     </user>
     <user email="dee@email.com">
@@ -15,4 +15,4 @@
     <user email="frank@email.com">    
         <name>Frank</name>        
     </user>
-</userlist>
+</userList>

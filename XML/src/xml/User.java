@@ -34,17 +34,7 @@ public class User
 {    
 
     
-    static void addUser(String name) {
-         Session session = HibernateContext.getSession();
-            UserDetails userDetails = UserDetails.find(name);
-            User user = new User(name, userDetails);
-            Transaction tx = session.beginTransaction(); 
-            {
-                session.save(user);
-            }
-            tx.commit();
-            session.close();
-    }
+    
     private long id;
     private String userName;
     private UserDetails userDetails;
@@ -80,13 +70,24 @@ public class User
     public List<MyForumPost> getPosts() { return posts; }
     public void setPosts(List<MyForumPost> posts) { this.posts = posts; }
     
-    @ManyToMany
-    @JoinTable(name = "forum_user", 
-                joinColumns={@JoinColumn(name = "userId")},
-                inverseJoinColumns={@JoinColumn(name = "forumId")})
-    public List<Forum> getForums() { return forums;}
-    public void setForums(List<Forum> forums) { this.forums = forums; }
+//    @ManyToMany
+//    @JoinTable(name = "forum_user", 
+//                joinColumns={@JoinColumn(name = "userId")},
+//                inverseJoinColumns={@JoinColumn(name = "forumId")})
+//    public List<Forum> getForums() { return forums;}
+//    public void setForums(List<Forum> forums) { this.forums = forums; }
     
+    public static void addUser(String name, String email) {
+        Session session = HibernateContext.getSession();
+            UserDetails userDetails = UserDetails.find(email);
+            User user = new User(name, userDetails);
+            Transaction tx = session.beginTransaction(); 
+            {
+                session.save(user);
+            }
+            tx.commit();
+            session.close();
+    }
     /**
      * Print user attributes.
      */
@@ -131,27 +132,27 @@ public class User
     /**
      * List all the users.
      */
-    public static void list()
-    {
-        Session session = HibernateContext.getSession();
-        Query query = session.createQuery("from User");
-        
-        System.out.println("All Users: ");
-        
-        for (User user : (List<User>) query.list())
-        {
-            user.print();
-            
-            System.out.print("    Forums:");
-            for (Forum forums : user.getForums())
-            {
-                System.out.printf(" %s", forums.getName());
-            }
-            System.out.println("");
-        }
-        
-        session.close();
-    }
+//    public static void list()
+//    {
+//        Session session = HibernateContext.getSession();
+//        Query query = session.createQuery("from User");
+//        
+//        System.out.println("All Users: ");
+//        
+//        for (User user : (List<User>) query.list())
+//        {
+//            user.print();
+//            
+//            System.out.print("    Forums:");
+//            for (Forum forums : user.getForums())
+//            {
+//                System.out.printf(" %s", forums.getName());
+//            }
+//            System.out.println("");
+//        }
+//        
+//        session.close();
+//    }
     
     public static User find(long id)
     {

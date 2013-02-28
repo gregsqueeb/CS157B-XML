@@ -50,10 +50,10 @@ public class MyForumPost {
         public Thread getThread() { return thread; }
         public void setThread(Thread thread) { this.thread = thread; }
         
-//        @ManyToOne
-//        @JoinColumn(name="userID")
-//        public User getUser() { return user; }
-//        public void setUser(User user) { this.user = user; }
+        @ManyToOne
+        @JoinColumn(name="userID")
+        public User getUser() { return user; }
+        public void setUser(User user) { this.user = user; }
         
         public void print()
         {
@@ -114,9 +114,10 @@ public class MyForumPost {
         public static void addForumPost(String content, String user, String thread){
             Session session = HibernateContext.getSession();
             Thread postThread = Thread.find(thread);
+            User userpost = User.find(user);
             MyForumPost post = new MyForumPost(content);
             post.setThread(postThread);
-            
+            post.setUser(userpost);
             Transaction tx = session.beginTransaction(); 
             {
                 session.save(post);

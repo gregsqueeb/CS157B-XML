@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * @author mr.nam
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "userlist_type", propOrder = {
+@XmlType(name = "userList_type", propOrder = {
     "user"
 })
 public class UserListType {

@@ -7,6 +7,6 @@
         <xs:attribute name="email" type="xs:string"/>
     </xs:complexType>
     
-    <xs:element name="userlist" type="userlist_type"/>
+    <xs:element name="userList" type="userList_type"/>
 
 </xs:schema>

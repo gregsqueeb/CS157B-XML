@@ -25,24 +25,10 @@ import org.hibernate.Transaction;
  * @author Ryan
  */
 @Entity
-@Table(name = "User_Details")
+@Table(name = "UserDetails")
 public class UserDetails {
 
-    static void addUserDetails(String email) {
-            Session session = HibernateContext.getSession();
-            UserDetails userDetails = new UserDetails(email);
-            Transaction tx = session.beginTransaction(); 
-            {
-                session.save(userDetails);
-            }
-            tx.commit();
-            session.close();
-            
-    }
-
-    public static UserDetails find(String name) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
+    
     
     private long id;
     private String emailAddress;
@@ -66,4 +52,25 @@ public class UserDetails {
     {
         this.emailAddress = address;
     } 
+    static void addUserDetails(String email) {
+            Session session = HibernateContext.getSession();
+            UserDetails userDetails = new UserDetails(email);
+            Transaction tx = session.beginTransaction(); 
+            {
+                session.save(userDetails);
+            }
+            tx.commit();
+            session.close();
+            
+    }
+
+    public static UserDetails find(String email) {
+            Session session = HibernateContext.getSession();
+            Query query = session.createQuery("from UserDetails where emailAddress = :emailvar");
+            query.setString("emailvar", email);
+            UserDetails userDetails = (UserDetails) query.uniqueResult();
+            //System.out.printf("Name you searched for: %s\n", name);
+            session.close();
+            return userDetails;
+    }
 }
