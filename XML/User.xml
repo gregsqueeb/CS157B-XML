@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<userlist>
-    <user>
-        <id>1</id>
-        <username>Mac</username>
-        <userdetailsid>1</userdetailsid>
+<userList>
+    <user email="mac@email.com">
+        <name>Mac</name>        
     </user>
-    <user>
-        <id>2</id>
-        <username>Dennis</username>
-        <userdetailsid>2</userdetailsid>
+    <user email="dennis@email.com">
+        <name>Dennis</name>     
     </user>
-    <user>
-        <id>3</id>
-        <username>Dee</username>
-        <userdetailsid>3</userdetailsid>
+    <user email="dee@email.com">
+        <name>Dee</name>        
     </user>
-    <user>
-        <id>4</id>
-        <username>Charlie</username>
-        <userdetailsid>4</userdetailsid>
+    <user email="charlie@email.com">
+        <name>Charlie</name>       
     </user>
-    <user>
-        <id>5</id>
-        <username>Frank</username>
-        <userdetailsid>5</userdetailsid>
+    <user email="frank@email.com">    
+        <name>Frank</name>        
     </user>
-</userlist>
+</userList>
